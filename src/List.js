@@ -2,12 +2,17 @@ import React from 'react';
 
 import Item from './Item'
 
-const List = () => {
+const List = ({todos}) => {
     return (
         <ul>
-            <Item content={'宿題をする'} id={1} />
-            <Item content={'洗濯をする'} id={2} />
-            <Item content={'仕事に行く'} id={3} />
+            {
+                // mapに２つ目の引数を指定すると、
+                // 処理中の要素のインデックス番号が取得できる
+                todos.map((todo, i) => (
+                    <Item content={todo} id={i+1} />
+                ))
+            }
+            
         </ul>
     )
 }

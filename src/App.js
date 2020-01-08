@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Form from './Form'
 import List from './List'
 
-// import './reset.scss'
-
 const App = () => {
+    // データはトップレベルのコンポーネントに配置する
+    const [todos, setTodos] = useState([
+        '宿題をする',
+        '洗濯をする',
+        '仕事に行く',
+        '片付けをする',
+        'かあああああ'
+    ])
+
     return (
         <>
             <Form />
-            <List />
+            <List todos={todos} />
         </>
     )
 }

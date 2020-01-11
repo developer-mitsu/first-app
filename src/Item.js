@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 // const Item = (props) => {
-const Item = ({content, id}) => {
+const Item = ({content, id, deleteTodo}) => {
     // 現在、それぞれのtodoが完了しているのかどうかを管理したい
     // ⇩
     // stateを使用することで実現できる　
@@ -21,8 +21,11 @@ const Item = ({content, id}) => {
     //　また、useStateの引数にはstateの初期値を設定できる
     
     const [isDone, setIsDone] = useState(false)
+    const [isEditing, setIsEditing] = useState(false);
 
-    let btnText = isDone ?  '戻す' : '完了！'
+    // useState() //=> [現在の状態, 状態を更新する関数]
+
+    // let btnText = isDone ?  '戻す' : '完了！'
 
     const handleClick = () => {
         // isDone = !isDone (この値の更新法はだめ！)
@@ -31,11 +34,18 @@ const Item = ({content, id}) => {
 
     return (
         <li>
-            <span>{id}: </span>
-            <span>{content}</span>
+            <span>{id + 1}: </span>
+            {
+                isEditing 
+                ? <input type="text" value={content} />
+                : <span>{content}</span>
+            }
             <button onClick={handleClick}>
-                {btnText}
+                {isDone ?  '戻す' : '完了！'}
             </button>
+            {/* イベントハンドラーに引数渡したい際はアロー関数でラップ */}
+            <button onClick={() => {deleteTodo(id)}}>削除</button>
+            <button onClick={() => {setIsEditing(!isEditing)}}>編集</button>
         </li>
     )
 }

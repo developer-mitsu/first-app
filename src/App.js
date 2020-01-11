@@ -13,10 +13,24 @@ const App = () => {
         'かあああああ'
     ])
 
+    const addTodo = (value) => {
+        const newTodos = [
+            ...todos, 
+            value
+        ]
+        setTodos(newTodos)
+    }
+
+    const deleteTodo = (id) => {
+        const deletedTodos = todos.filter((todo, index) => index !== id)
+
+        setTodos(deletedTodos)
+    }
+
     return (
         <>
-            <Form />
-            <List todos={todos} />
+            <Form addTodo={addTodo} />
+            <List todos={todos} deleteTodo={deleteTodo} />
         </>
     )
 }

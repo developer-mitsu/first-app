@@ -4,11 +4,9 @@ import Item from './Item'
 const List = () => {
     return (
         <ol>
-            <Item />
-            <Item />
-            <Item />
-            <Item />
-            <Item />
+            {/* Item({content: '課題をする'}) */}
+            <Item content={'課題をする'} />
+            <Item content={'仕事をする'} />
         </ol>        
     )
 }

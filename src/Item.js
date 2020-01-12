@@ -1,32 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-const Item = (props) => {
-    // const [isDone, setIsDone] = [最新の状態, 値を更新する関数]
-    const [isDone, setIsDone] = useState(false)
-
+const Item = () => {
     return (
-        <li>
-            <input 
-                type="checkbox" 
-                // チェックされた際にisDoneをtrueにする
-                // チェックが外れた際にisDoneをfalseにする
-                onChange={() => {
-                    setIsDone(!isDone)
-                }} 
-            />
-            <ContentText
-                isDone={isDone}
-            // 三項演算子を使用して、isDoneの値によって取り消し線の表示を切り替える
-                // style={{textDecoration: isDone ? 'line-through' : 'none'}}
-            >{props.content}</ContentText>
-        </li>
+        <Wrapper>
+            <input type="checkbox" />
+            宿題をする
+        </Wrapper>
     )
 }
 
-const ContentText = styled.span`
-    font-size: 1.5em;
-    text-decoration: ${props => props.isDone ? 'line-through' : 'none'};
+const Wrapper = styled.li`
+    width: 100%;
+    /* height: 50px; */
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-size: 2em;
+    box-sizing: border-box;
+    border-bottom: 1px dotted gray;
 `
 
 export default Item

@@ -6,9 +6,7 @@ const Item = (props) => {
     // stateが変更される(setIsDoneが呼び出される)と、Reactはコンポーネントを再描写する
 
     const desc = 'サンプル'
-
     const btnStatus = isDone ? '未完了に戻す' : '完了'
-    
 
     return (
         <ItemWrapper>
@@ -20,8 +18,9 @@ const Item = (props) => {
     )
 }
 
-const ItemWrapper = styled.li`
-    background-color: gray;
+const ContentText = styled.span`
+    font-size: 1.5em;
+    text-decoration: ${props => props.isDone ? 'line-through' : 'none'};
 `
 
 export default Item

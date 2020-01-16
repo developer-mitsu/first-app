@@ -35,8 +35,8 @@ const Title = styled.h1`
     text-align: center;
     color: white;
     font-size: 7em;
+    margin-bottom: 0px;
     
-
     font-family: 'Rubik Mono One', sans-serif;
 `
 

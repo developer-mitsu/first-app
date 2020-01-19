@@ -3,12 +3,19 @@ import styled from 'styled-components'
 
 import Item from './Item'
 
-const List = () => {
+const List = ({ todos }) => {
+
+    const renderItems = todos.map(todo => {
+        return (
+            <Item
+                content={todo}
+            />
+        )
+    })
+
     return (
         <Wrapper>
-            <Item />
-            <Item />
-            <Item />
+            {renderItems}
         </Wrapper>
     )
 }

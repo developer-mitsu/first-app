@@ -1,9 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Form = () => {
+const Form = ({ addTodo }) => {
+    const handleSubmit = (e) => {
+        // デフォルトの挙動をキャンセルする
+        e.preventDefault()
+        addTodo()
+    }
+
     return (
-        <Wrapper>
+        <Wrapper onSubmit={handleSubmit}>
             <input type="text"/>
         </Wrapper>
     )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // yarn add styled-componentsを実行を実行すること
 import styled, {createGlobalStyle} from 'styled-components'
@@ -7,13 +7,26 @@ import Form from './Form'
 import List from './List'
 
 const App = () => {
+    const [todos, setTodos] = useState([
+        '宿題をする',
+        '洗濯をする'
+    ])
+
+    const addTodo = () => {
+        const newTodos = [
+            ...todos,
+            'New Item'
+        ]
+        setTodos(newTodos)
+    }
+
     return (
         <>
             <GlobalStyle />
             <Title>Todo App</Title>
 
-            <Form />
-            <List />
+            <Form addTodo={addTodo} />
+            <List todos={todos} />
         </>
     )
 }

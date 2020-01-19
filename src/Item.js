@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const Item = () => {
+const Item = ({ content }) => {
+    const [isDone, setIsDone] = useState(false)
+
+    const handleChange = () => {
+        // setIsDoneを実行してisDoneを書き換える
+        setIsDone(!isDone)
+    }
+
     return (
         <Wrapper>
-            <input type="checkbox" />
-            宿題をする
+            <input type="checkbox" 
+                onChange={handleChange}
+            />
+            <Text isDone={isDone}>{content}</Text>        
         </Wrapper>
     )
 }
+
+const Text = styled.span`
+    font-size: 2em;
+    text-decoration: ${props => props.isDone ? 'line-through': 'none'};
+`
 
 const Wrapper = styled.li`
     width: 100%;
@@ -17,7 +31,6 @@ const Wrapper = styled.li`
     display: flex;
     align-items: center;
     padding: 20px;
-    font-size: 2em;
     box-sizing: border-box;
     border-bottom: 1px dotted gray;
 `
